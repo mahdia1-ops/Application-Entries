@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+class Homework2 {
+    public static Scanner scan;
+    
+    public static double main(Number[] args) {
+    double[] blitz = {3.7, 7.2, 5.6};
+    double max = blitz[0];
+    double min = blitz[0];
+        for (int i = 1; i < blitz.length; i++) {
+        if (blitz[i] > max) {
+            max = blitz[i];
+            return max;
+        }
+    }
+        System.out.println("The max value in the array is" + max);
+        return max;
+        // this is the first question of the 2nd set of practice problems under functions in programming 101//
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("This is Ahmad Mahdi's homework 2 for Robotics");
+        // prints out that this is Ahmad Mahdi's homework 2 for Robotics
+        System.out.println("Please a enter a integer value for modulo by 4");
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int xyz = n % 4;
+        if (xyz == 0) {
+            System.out.println("0");
+        } else if (xyz == 1) {
+            System.out.println(1);
+        } else if (xyz == 2) {
+            System.out.println(2);
+        } else {
+            System.out.println(3);
+        }
+        System.out.println("Please enter a integer value and two booleans");
+            int v = scanner.nextInt();
+            boolean f =scanner.nextBoolean();
+            boolean g =scanner.nextBoolean();
+            if ((v > 0 || f) == true || g == false) {
+                System.out.println(v);
+            } else if (v > 0 && f == false || g == true) {
+                System.out.println(g);
+            } else {
+                System.out.println(f);
+            }
+    }
+    /* So this code is supposed to answer the 1st set of practice problems under functions in programming 101 */
+}
