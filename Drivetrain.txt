@@ -1,4 +1,69 @@
-public class Drive {
+package org.sciborgs1155.robot.Drivetrain;
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.SparkMaxConfig;
+//This is severely infinished lol
+public class Drivetrain extends SubsystemBase {
+  private final SparkMax rightLeadMotor = new SparkMax(1, MotorType.kBrushless);
+  private final SparkMax rightFollowMotor = new SparkMax(2, MotorType.kBrushless);
+  private final SparkMax leftLeadMotor = new SparkMax(3, MotorType.kBrushless);
+  private final SparkMax leftFollowMotor = new SparkMax(4, MotorType.kBrushless);
+
+
+    // All of this is just basic tankdrive based driving logic- absically.
+  public Drivetrain(){  // Idk what this will be for if their will be a use?
+    /* Maybe we can use this to make the code more efficient  like I think there is 
+    a way to configure and initialize motors so that they automatically follow the lead motor*/
+    SparkMaxConfig rightfollower = new SparkMaxConfig();
+      rightfollower.follow(rightLeadMotor);
+    rightFollowMotor.configure(rightfollower, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    SparkMaxConfig leftfollower = new SparkMaxConfig();
+      leftfollower.follow(leftLeadMotor);
+    leftFollowMotor.configure(leftfollower, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    // I tried attempting so that the follower follows the leader.
+  }
+
+  // All of this is kinda hardcoded in my local opinion but if my follower logic does not work well than it is what it is
+  public drivefnb(double speed) { //I think this is sel-explanatory / Drives front and back
+    if (){ // Basically if joystick dictates backwards than speed gets multiplied by -1 and if its frontwards than speed stays the same
+      speed = speed;
+    } else {
+      spped = speed * -1;
+    }
+    rightLeadMotor.set(speed);
+    rightFollowMotor.set(speed);
+    leftLeadMotor.set(speed);
+    leftFollowMotor.set(speed);
+    if (){ //joystick is neutral
+      moter.stopMotor();
+    }
+  }
+  public drivernl(double speed){ //Drives right and left
+    double speedRightMotors;
+    double speedLeftMotors;
+    if (){ //joystick dictates to the right
+      speedRightMotors = speed * -1;
+      speedLeftMotors = speed;
+    } else {
+      speedRightMotors = speed;
+      speedLeftMotors = speed * -1;
+    }
+    rightLeadMotor.set(speedRightMotors);
+    rightFollowMotor.set(speedRightMotors);
+    leftLeadMotor.set(speedLeftMotors);
+    leftFollowMotor.set(speedLeftMotors);
+  }
+
+  @Override
+  public void periodic() {
+    if (){ //the joystick tha controls right and left
+      this.drivernl();//Put thing in method so motor Gets speed from controller if that mkes sense
+    } else { // the joystick that controls forward and backwar
+       this.drivefnb(); //Put thing in method so motor Gets speed from controller if that mkes sense
+    }
     
+   
     
+  }
 }
